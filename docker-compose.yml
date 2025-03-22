@@ -1,0 +1,13 @@
+
+services:
+  agentic_app:
+    build: .
+    container_name: agentic_app
+    command: "streamlit run app.py --server.port=8501 --server.address=0.0.0.0"
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - .:/app  # Mount the local directory to the container
+    restart: unless-stopped
